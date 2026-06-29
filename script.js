@@ -4,6 +4,7 @@ const topBtn = document.getElementById("topBtn");
 
 menuBtn.addEventListener("click", () => {
     navLinks.classList.toggle("active");
+    menuBtn.textContent = navLinks.classList.contains("active") ? "✕" : "☰";
 });
 
 window.addEventListener("scroll", () => {
@@ -24,5 +25,6 @@ topBtn.addEventListener("click", () => {
 document.querySelectorAll(".nav-links a").forEach(link => {
     link.addEventListener("click", () => {
         navLinks.classList.remove("active");
+        menuBtn.textContent = "☰";
     });
 });
