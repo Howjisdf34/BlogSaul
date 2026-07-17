@@ -3,291 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog DQL | Lenguaje de Consulta de Datos</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Blog SQL: DDL vs DML</title>
+    <!-- Tailwind CSS para que se vea premium al instante -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
 </head>
-<body>
+<body class="bg-slate-950 text-slate-100 min-h-screen selection:bg-indigo-500 selection:text-white">
 
-    <header class="header">
-        <nav class="navbar">
-            <div class="logo">Blog<span>DQL</span></div>
-
-            <button class="menu-btn" id="menuBtn">☰</button>
-
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#que-es">¿Qué es?</a></li>
-                <li><a href="#comandos">Comandos</a></li>
-                <li><a href="#ejemplos">Ejemplos</a></li>
-                <li><a href="#buenas-practicas">Buenas prácticas</a></li>
-            </ul>
-        </nav>
+    <!-- Navbar -->
+    <header class="border-b border-slate-900 bg-slate-950/80 sticky top-0 z-50 backdrop-blur-sm">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <span class="text-xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+                SQL.blog
+            </span>
+            <span class="text-xs text-slate-500 font-mono">Apuntes Rápidos</span>
+        </div>
     </header>
 
-    <section class="hero" id="inicio">
-        <div class="hero-content">
-            <div class="hero-text">
-                <p class="tag">Bases de datos · SQL · Consultas</p>
-                <h1>DQL: El lenguaje para consultar información en bases de datos</h1>
-                <p>
-                    Aprende qué es DQL, para qué sirve y cómo se usa dentro de SQL
-                    para obtener información almacenada en una base de datos.
-                </p>
-                <a href="#que-es" class="btn">Comenzar lectura</a>
-            </div>
-            <div class="hero-image">
-                <img src="database.svg" alt="Ilustración de base de datos">
-            </div>
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-6 py-16">
+        
+        <!-- Hero -->
+        <div class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
+                Comprendiendo <span class="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">DDL y DML</span>
+            </h1>
+            <p class="text-slate-400 text-base max-w-xl mx-auto">
+                La forma más sencilla de entender cómo se define y cómo se manipula una base de datos en SQL, sin rodeos.
+            </p>
         </div>
-    </section>
 
-    <main class="container">
-        <article class="blog-card" id="que-es">
-            <div class="blog-meta">
-                <span></span>
-                <span></span>
+        <!-- Explicación Rápida (La Analogía) -->
+        <div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-6 mb-12">
+            <h3 class="text-lg font-bold mb-2 text-indigo-400">La regla de oro 💡</h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+                Piensa en una base de datos como una **casa**. 
+                El lenguaje <strong>DDL</strong> define los planos y construye las paredes de la casa. El lenguaje <strong>DML</strong> es el que te permite meter, cambiar o sacar los muebles de adentro.
+            </p>
+        </div>
+
+        <!-- Secciones Core: DDL y DML -->
+        <div class="grid md:grid-cols-2 gap-8 mb-16">
+            
+            <!-- Tarjeta DDL -->
+            <div class="bg-slate-900/30 border border-slate-900 rounded-2xl p-6">
+                <div class="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-2">Definición de Estructura</div>
+                <h2 class="text-2xl font-bold mb-4">¿Qué es DDL?</h2>
+                <p class="text-slate-400 text-sm mb-6 leading-relaxed">
+                    <strong>Data Definition Language</strong> se usa para crear, modificar y destruir la estructura de los objetos de la base de datos (tablas, índices, etc.). No toca los registros.
+                </p>
+                
+                <h4 class="text-xs font-bold text-slate-500 uppercase mb-3">Comandos principales:</h4>
+                <ul class="space-y-3 text-sm">
+                    <li class="flex items-center space-x-2">
+                        <code class="bg-slate-900 text-indigo-300 px-2 py-0.5 rounded text-xs font-mono">CREATE</code>
+                        <span class="text-slate-400">Crea tablas o bases de datos nuevas.</span>
+                    </li>
+                    <li class="flex items-center space-x-2">
+                        <code class="bg-slate-900 text-indigo-300 px-2 py-0.5 rounded text-xs font-mono">ALTER</code>
+                        <span class="text-slate-400">Modifica la estructura (añade/borra columnas).</span>
+                    </li>
+                    <li class="flex items-center space-x-2">
+                        <code class="bg-slate-900 text-indigo-300 px-2 py-0.5 rounded text-xs font-mono">DROP</code>
+                        <span class="text-slate-400">Elimina tablas u objetos por completo.</span>
+                    </li>
+                </ul>
             </div>
 
-            <div class="content-with-image">
-                <div class="content-text">
-                    <h2>¿Qué es DQL?</h2>
-                    <p>
-                        DQL significa <strong>Data Query Language</strong>, que en español se traduce como
-                        <strong>Lenguaje de Consulta de Datos</strong>. Es una parte de SQL que se utiliza
-                        para consultar, buscar y recuperar información guardada dentro de una base de datos.
-                    </p>
+            <!-- Tarjeta DML -->
+            <div class="bg-slate-900/30 border border-slate-900 rounded-2xl p-6">
+                <div class="text-xs font-bold text-purple-400 uppercase tracking-widest mb-2">Manipulación de Datos</div>
+                <h2 class="text-2xl font-bold mb-4">¿Qué es DML?</h2>
+                <p class="text-slate-400 text-sm mb-6 leading-relaxed">
+                    <strong>Data Manipulation Language</strong> te permite trabajar con los datos reales que viven dentro de las tablas. Se encarga de las consultas y modificaciones de registros.
+                </p>
 
-                    <p>
-                        A diferencia de otros lenguajes de SQL, DQL no se usa para crear tablas, modificar
-                        estructuras o eliminar datos. Su función principal es <strong>mostrar información</strong>
-                        de acuerdo con las condiciones que indique el usuario.
-                    </p>
-
-                    <div class="info-box">
-                        <strong>Idea clave:</strong> DQL sirve para hacer preguntas a la base de datos y recibir
-                        respuestas en forma de tablas o resultados.
-                    </div>
-                </div>
-                <div class="content-image">
-                    <img src="query.svg" alt="Ilustración de consulta SQL">
-                </div>
-            </div>
-        </article>
-
-        <article class="blog-card">
-            <div class="content-with-image reverse-mobile">
-                <div class="content-image">
-                    <img src="search.svg" alt="Ilustración de búsqueda de información">
-                </div>
-                <div class="content-text">
-                    <h2>Importancia de DQL en bases de datos</h2>
-                    <p>
-                        En cualquier sistema que maneje información, como una tienda, una escuela, un banco o
-                        una red social, es necesario consultar datos constantemente. Por ejemplo, se puede querer
-                        saber qué clientes compraron un producto, cuántos alumnos aprobaron una materia o cuáles
-                        empleados pertenecen a cierto departamento.
-                    </p>
-
-                    <p>
-                        DQL permite obtener esa información de forma rápida, ordenada y precisa. Por eso es una
-                        herramienta esencial para programadores, administradores de bases de datos y analistas de datos.
-                    </p>
-                </div>
-            </div>
-        </article>
-
-        <section class="grid-section" id="comandos">
-            <div class="section-title">
-                <h2>Comandos principales de DQL</h2>
-                <p>El comando más importante dentro de DQL es <strong>SELECT</strong>.</p>
+                <h4 class="text-xs font-bold text-slate-500 uppercase mb-3">Comandos principales:</h4>
+                <ul class="space-y-3 text-sm">
+                    <li class="flex items-center space-x-2">
+                        <code class="bg-slate-900 text-purple-300 px-2 py-0.5 rounded text-xs font-mono">SELECT</code>
+                        <span class="text-slate-400">Consulta o recupera registros específicos.</span>
+                    </li>
+                    <li class="flex items-center space-x-2">
+                        <code class="bg-slate-900 text-purple-300 px-2 py-0.5 rounded text-xs font-mono">INSERT</code>
+                        <span class="text-slate-400">Agrega nuevas filas de datos a una tabla.</span>
+                    </li>
+                    <li class="flex items-center space-x-2">
+                        <code class="bg-slate-900 text-purple-300 px-2 py-0.5 rounded text-xs font-mono">UPDATE</code>
+                        <span class="text-slate-400">Modifica datos que ya existen.</span>
+                    </li>
+                    <li class="flex items-center space-x-2">
+                        <code class="bg-slate-900 text-purple-300 px-2 py-0.5 rounded text-xs font-mono">DELETE</code>
+                        <span class="text-slate-400">Elimina registros de la tabla.</span>
+                    </li>
+                </ul>
             </div>
 
-            <div class="cards">
-                <div class="mini-card">
-                    <h3>SELECT</h3>
-                    <p>Indica qué columnas o datos se desean consultar.</p>
-                </div>
+        </div>
 
-                <div class="mini-card">
-                    <h3>FROM</h3>
-                    <p>Indica de qué tabla se obtendrá la información.</p>
-                </div>
-
-                <div class="mini-card">
-                    <h3>WHERE</h3>
-                    <p>Permite filtrar los resultados usando condiciones.</p>
-                </div>
-
-                <div class="mini-card">
-                    <h3>ORDER BY</h3>
-                    <p>Ordena los resultados de forma ascendente o descendente.</p>
-                </div>
-
-                <div class="mini-card">
-                    <h3>GROUP BY</h3>
-                    <p>Agrupa registros que tienen valores similares.</p>
-                </div>
-
-                <div class="mini-card">
-                    <h3>HAVING</h3>
-                    <p>Filtra grupos después de usar GROUP BY.</p>
-                </div>
+        <!-- Tabla Comparativa Sencilla -->
+        <div class="border border-slate-900 rounded-2xl overflow-hidden bg-slate-900/10">
+            <div class="p-5 border-b border-slate-900 bg-slate-900/30">
+                <h3 class="font-bold text-lg">Resumen de un vistazo</h3>
             </div>
-        </section>
+            <table class="w-full text-left border-collapse text-sm text-slate-400">
+                <thead>
+                    <tr class="border-b border-slate-900 text-xs font-mono text-slate-500 uppercase">
+                        <th class="p-4">Criterio</th>
+                        <th class="p-4 text-indigo-400">DDL</th>
+                        <th class="p-4 text-purple-400">DML</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-900">
+                    <tr>
+                        <td class="p-4 font-semibold text-slate-300">¿Qué modifica?</td>
+                        <td class="p-4">El esquema / estructura (tablas, columnas).</td>
+                        <td class="p-4">Los registros de datos (filas).</td>
+                    </tr>
+                    <tr>
+                        <td class="p-4 font-semibold text-slate-300">¿Se puede deshacer?</td>
+                        <td class="p-4">No fácilmente (Auto-commit).</td>
+                        <td class="p-4">Sí, permite transacciones (Rollback/Commit).</td>
+                    </tr>
+                    <tr>
+                        <td class="p-4 font-semibold text-slate-300">Comando ejemplo</td>
+                        <td class="p-4 font-mono text-xs text-indigo-300">ALTER TABLE usuarios ADD correo VARCHAR;</td>
+                        <td class="p-4 font-mono text-xs text-purple-300">INSERT INTO usuarios VALUES ('Juan');</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-        <article class="blog-card" id="ejemplos">
-            <div class="content-with-image">
-                <div class="content-text">
-                    <h2>Ejemplos básicos de consultas DQL</h2>
-
-                    <h3>1. Consultar todos los datos de una tabla</h3>
-                    <p>Este ejemplo muestra todos los registros de la tabla <strong>clientes</strong>.</p>
-
-                    <pre><code>SELECT * FROM clientes;</code></pre>
-
-                    <h3>2. Consultar columnas específicas</h3>
-                    <p>Este ejemplo solo muestra el nombre y teléfono de los clientes.</p>
-
-                    <pre><code>SELECT nombre, telefono FROM clientes;</code></pre>
-
-                    <h3>3. Usar una condición con WHERE</h3>
-                    <p>Este ejemplo muestra los productos cuyo precio sea mayor a 100.</p>
-
-                    <pre><code>SELECT nombre_producto, precio
-FROM productos
-WHERE precio > 100;</code></pre>
-
-                    <h3>4. Ordenar resultados</h3>
-                    <p>Este ejemplo ordena los productos desde el más caro hasta el más barato.</p>
-
-                    <pre><code>SELECT nombre_producto, precio
-FROM productos
-ORDER BY precio DESC;</code></pre>
-
-                    <h3>5. Agrupar datos</h3>
-                    <p>Este ejemplo cuenta cuántos productos existen por categoría.</p>
-
-                    <pre><code>SELECT categoria, COUNT(*) AS total_productos
-FROM productos
-GROUP BY categoria;</code></pre>
-                </div>
-                <div class="content-image sticky-image">
-                    <img src="code.svg" alt="Ilustración de código SQL">
-                </div>
-            </div>
-        </article>
-
-        <article class="blog-card">
-            <div class="content-with-image reverse-mobile">
-                <div class="content-text">
-                    <h2>DQL y las funciones de agregación</h2>
-                    <p>
-                        Las funciones de agregación permiten realizar cálculos sobre los datos consultados.
-                        Normalmente se usan junto con <strong>GROUP BY</strong>.
-                    </p>
-
-                    <div class="table-container">
-                        <table>
-                        <thead>
-                            <tr>
-                                <th>Función</th>
-                                <th>Uso</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>COUNT()</td>
-                                <td>Cuenta registros.</td>
-                            </tr>
-                            <tr>
-                                <td>SUM()</td>
-                                <td>Suma valores numéricos.</td>
-                            </tr>
-                            <tr>
-                                <td>AVG()</td>
-                                <td>Calcula el promedio.</td>
-                            </tr>
-                            <tr>
-                                <td>MAX()</td>
-                                <td>Obtiene el valor máximo.</td>
-                            </tr>
-                            <tr>
-                                <td>MIN()</td>
-                                <td>Obtiene el valor mínimo.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    </div>
-                </div>
-                <div class="content-image">
-                    <img src="analytics.svg" alt="Ilustración de análisis de datos">
-                </div>
-            </div>
-        </article>
-
-        <article class="blog-card">
-            <div class="content-with-image">
-                <div class="content-image">
-                    <img src="join.svg" alt="Ilustración de unión de tablas">
-                </div>
-                <div class="content-text">
-                    <h2>DQL con JOIN</h2>
-                    <p>
-                        En bases de datos relacionales, muchas veces la información se encuentra dividida en
-                        varias tablas. Para unir esos datos se utiliza <strong>JOIN</strong>.
-                    </p>
-
-                    <p>Ejemplo: mostrar el nombre del cliente y el producto que compró.</p>
-
-                    <pre><code>SELECT clientes.nombre, productos.nombre_producto
-FROM ventas
-JOIN clientes ON ventas.id_cliente = clientes.id_cliente
-JOIN productos ON ventas.id_producto = productos.id_producto;</code></pre>
-                </div>
-            </div>
-        </article>
-
-        <article class="blog-card" id="buenas-practicas">
-            <h2>Buenas prácticas al usar DQL</h2>
-
-            <ul class="tips">
-                <li>Evita usar <strong>SELECT *</strong> cuando solo necesitas algunas columnas.</li>
-                <li>Usa nombres claros para tablas y columnas.</li>
-                <li>Filtra los resultados con <strong>WHERE</strong> para no cargar datos innecesarios.</li>
-                <li>Ordena los resultados solo cuando sea necesario.</li>
-                <li>Usa alias para que tus consultas sean más fáciles de leer.</li>
-            </ul>
-        </article>
-
-        <article class="blog-card conclusion">
-            <div class="content-with-image">
-                <div class="content-text">
-                    <h2>Conclusión</h2>
-                    <p>
-                        DQL es una parte fundamental de SQL porque permite consultar información dentro de una
-                        base de datos. Su comando principal es <strong>SELECT</strong>, el cual puede combinarse
-                        con otras instrucciones como <strong>WHERE</strong>, <strong>ORDER BY</strong>,
-                        <strong>GROUP BY</strong>, <strong>HAVING</strong> y <strong>JOIN</strong>.
-                    </p>
-
-                    <p>
-                        Dominar DQL ayuda a obtener datos de manera eficiente y a comprender mejor cómo se
-                        organiza la información en los sistemas.
-                    </p>
-                </div>
-                <div class="content-image">
-                    <img src="learning.svg" alt="Ilustración de aprendizaje sobre bases de datos">
-                </div>
-            </div>
-        </article>
     </main>
 
-    <footer class="footer">
-        <p>Todos los derechos reservados a Saul</p>
+    <!-- Footer -->
+    <footer class="border-t border-slate-900 bg-slate-950 py-8 text-center text-xs text-slate-700">
+        <p>&copy; 2026 SQL Blog. Sin rodeos, directo al código.</p>
     </footer>
 
-    <button class="top-btn" id="topBtn">↑</button>
-
-    <script src="script.js"></script>
 </body>
 </html>
